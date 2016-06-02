@@ -22,6 +22,13 @@
     "url": "https://github.com/mfahlandt/body-parser-zlib/issues"
   },
   "homepage": "https://github.com/mfahlandt/body-parser-zlib/issues#readme",
+  "dependencies": {
+    "bytes": "2.3.0",
+    "content-type": "~1.0.1",
+    "debug": "~2.2.0",
+    "iconv-lite": "0.4.13",
+    "type-is": "~1.6.12"
+  },
   "devDependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
