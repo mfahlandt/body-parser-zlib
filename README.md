@@ -85,4 +85,4 @@ This library was born out of a frustration that [body-parser](https://github.com
 
 ## License
 
-MIT
+GPL 3
