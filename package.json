@@ -17,7 +17,7 @@
     "body-parser"
   ],
   "author": "Mario Fahlandt <mfahlandt@pixel-haufen.de>",
-  "license": "MIT",
+  "license": "GPL 3",
   "bugs": {
     "url": "https://github.com/mfahlandt/body-parser-zlib/issues"
   },
