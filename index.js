@@ -27,6 +27,8 @@ module.exports = function (bodyParser) {
     function zlib(options) {
         var opts = options || {};
 
+        var verify = opts.verify || false;
+
         if (verify !== false && typeof verify !== 'function') {
             throw new TypeError('option verify must be function')
         }
