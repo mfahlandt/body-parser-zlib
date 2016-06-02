@@ -17,6 +17,7 @@ describe('Zlib Body Parser', function() {
         app.set('env', 'test');
         app.use(bodyParser.zlib(options));
         app.post('/', function(req, res) {
+            console.log("hallo")
             res.status(200).send({ parsed: req.body });
         });
     };
@@ -26,12 +27,13 @@ describe('Zlib Body Parser', function() {
     });
 
     it('should parse a body with content-type application/xml', function(done) {
+        console.log("bier")
         createServer();
-
+        console.log("bier2")
         request(app)
             .post('/')
             .set('Content-Type', 'application/xml')
-            .send(zlib.deflate('<customer><name>Bob</name></customer>').toString('utf8'))
+            .send(zlib.gzip('<customer><name>Bob</name></customer>'))
             .expect(200, '<customer><name>Bob</name></customer>', done);
     });
 

@@ -11,6 +11,7 @@ var iconv = require('iconv-lite');
 
 module.exports = function (bodyParser) {
     if (bodyParser.zlib) {
+        console.log("here2")
         // We already setup the zlib parser.
         // End early.
         return;
@@ -25,6 +26,7 @@ module.exports = function (bodyParser) {
      * @api public
      */
     function zlib(options) {
+        console.log("here3")
         var opts = options || {};
 
         var verify = opts.verify || false;
@@ -41,24 +43,21 @@ module.exports = function (bodyParser) {
         }
 
         return function zlibParser() {
+            console.log("here4")
             if (req._body) {
+                console.log("not here!")
                 return debug('body already parsed'), next()
             }
-
             req.body = req.body || {};
-
+console.log("here")
             // skip requests without bodies
             if (!typeis.hasBody(req)) {
+                console.log("not here!")
                 return debug('skip empty body'), next();
             }
 
             debug('content-type %j', req.headers['content-type']);
-
-            // determine if request should be parsed
-            if (!shouldParse(req)) {
-                return debug('skip parsing'), next()
-            }
-
+            
             req.addListener("data", function (chunk) {
                 data.push(new Buffer(chunk));
             });
@@ -75,9 +74,7 @@ module.exports = function (bodyParser) {
                 });
             });
         };
-
-
-
+        
     }
     // Finally add the `xml` function to the bodyParser.
     Object.defineProperty(bodyParser, 'zlib', {
