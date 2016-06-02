@@ -36,32 +36,6 @@ app.use(bodyParser.zlib());
 This will parse any gziped request and place it as a JavaScript object on `req.body` for your route handlers to use.
 
 
-### Options
-
-You can also pass in options:
-
-``` js
-app.use(bodyParser.zlib(options));
-```
-
-The `options` object accepts any of the following keys:
-
-#### defaultCharset
-
-Specify the default character set for the text content if the charset is not specified in the `Content-Type` header of the request. Defaults to `utf-8`.
-
-#### limit
-
-Controls the maximum request body size. If this is a number, then the value specifies the number of bytes; if it is a string, the value is passed to the [bytes](https://www.npmjs.com/package/bytes) library for parsing. Defaults to `'100kb'`.
-
-#### verify
-
-The `verify` option, if supplied, is called as `verify(req, res, buf, encoding)`, where `buf` is a `Buffer` of the raw request body and `encoding` is the encoding of the request. The parsing can be aborted by throwing an error.
-
-#### xmlParseOptions
-
-This option controls the behaviour of the XML parser. You can pass any option that is supported by the [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js) library: [see here](https://github.com/Leonidas-from-XIV/node-xml2js#options) for a list of these options.
-
 ## Example
 
 ``` js
@@ -71,9 +45,7 @@ var express = require('express'),
 require('body-parser-zlib')(bodyParser);
 
 var app = express();
-app.use(bodyParser.zlib({
-  limit: '1MB'   // Reject payload bigger than 1 MB
-}));
+app.use(bodyParser.zlib());
 
 app.post('/users', function(req, res, body) {
   // Any request with an Zlib payload will be parsed
@@ -85,6 +57,27 @@ app.post('/users', function(req, res, body) {
 
 ```
 
+For Single routes
+
+``` js
+var express = require('express'),
+    bodyParser = require('body-parser');
+var zlibParser;
+
+
+var app = express();
+require('body-parser-zlib')(bodyParser);
+var zlibParser = bodyParser.zlib();
+
+app.post('/users', zlib, function(req, res, body) {
+  // Any request with an Zlib payload will be parsed
+  // and a String produced on req.body
+  // corresponding to the request payload.
+  console.log(req.body);
+  res.status(200).end();
+});
+
+```
 ## Motivation
 
 This library was born out of a frustration that [body-parser](https://github.com/expressjs/body-parser), doesn't support parsing gziped content, if the header was not set, so for old systems you can use this
