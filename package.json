@@ -1,0 +1,34 @@
+{
+  "name": "body-parser-zlib",
+  "version": "1.0.0",
+  "description": "Zlib parser middleware for express.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfahlandt/body-parser-zlib"
+  },
+  "keywords": [
+    "express",
+    "zlib",
+    "middleware",
+    "body-parser"
+  ],
+  "author": "Mario Fahlandt <mfahlandt@pixel-haufen.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mfahlandt/body-parser-zlib/issues"
+  },
+  "homepage": "https://github.com/mfahlandt/body-parser-zlib/issues#readme",
+  "devDependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  }
+}
