@@ -27,14 +27,18 @@ describe('Zlib Body Parser', function() {
     });
 
     it('should parse a body with content-type application/xml', function(done) {
-        console.log("bier")
-        createServer();
-        console.log("bier2")
-        request(app)
-            .post('/')
-            .set('Content-Type', 'application/xml')
-            .send(zlib.gzip('<customer><name>Bob</name></customer>'))
-            .expect(200, '<customer><name>Bob</name></customer>', done);
+        var text = "Hello World!";
+
+        zlib.deflate(text, function (error, data) {
+            if (error) throw error;
+            createServer();
+            request(app)
+                .post('/')
+                .set('Content-Type', 'application/xml')
+                .send(data)
+                .expect(200, '{"parsed":"Hello World!"}', done);
+        })
+
     });
 
 });

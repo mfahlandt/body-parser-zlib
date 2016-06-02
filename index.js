@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-var zlib = require('zlib');
+var zlibLibrary = require('zlib');
 var typeis = require('type-is');
 var debug = require('debug')('body-parser:zlib');
 var bytes = require('bytes');
@@ -11,7 +11,6 @@ var iconv = require('iconv-lite');
 
 module.exports = function (bodyParser) {
     if (bodyParser.zlib) {
-        console.log("here2")
         // We already setup the zlib parser.
         // End early.
         return;
@@ -26,10 +25,7 @@ module.exports = function (bodyParser) {
      * @api public
      */
     function zlib(options) {
-        console.log("here3")
         var opts = options || {};
-
-        var verify = opts.verify || false;
 
         if (verify !== false && typeof verify !== 'function') {
             throw new TypeError('option verify must be function')
@@ -42,40 +38,39 @@ module.exports = function (bodyParser) {
             }))
         }
 
-        return function zlibParser() {
-            console.log("here4")
+        return function zlibParser(req, res, next) {
+            var data = [];
             if (req._body) {
-                console.log("not here!")
                 return debug('body already parsed'), next()
             }
             req.body = req.body || {};
-console.log("here")
+
             // skip requests without bodies
             if (!typeis.hasBody(req)) {
-                console.log("not here!")
                 return debug('skip empty body'), next();
             }
 
             debug('content-type %j', req.headers['content-type']);
-            
+
             req.addListener("data", function (chunk) {
                 data.push(new Buffer(chunk));
             });
             req.addListener("end", function () {
                 var buffer = Buffer.concat(data);
-                zlib.inflate(buffer, function (err, result) {
+                zlibLibrary.inflate(buffer, function (err, result) {
                     if (!err) {
                         req._body = true;
                         req.body = result.toString();
-                        next();
-                    } else {
-                        next(err);
+                        return next();
                     }
+                    return next(err);
+
                 });
             });
         };
-        
+
     }
+
     // Finally add the `xml` function to the bodyParser.
     Object.defineProperty(bodyParser, 'zlib', {
         configurable: true,
