@@ -1,4 +1,4 @@
-# XML Body Parser
+# gzip Body Parser
 
 Adds zlib as parser to the [body-parser](https://github.com/expressjs/body-parser) library, so you can convert incoming gziped data into a string representation.
 
