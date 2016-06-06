@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mfahlandt/body-parser-zlib"
+    "url": "git+https://github.com/point-of-media/body-parser-zlib"
   },
   "keywords": [
     "express",
@@ -19,9 +19,9 @@
   "author": "Mario Fahlandt <mfahlandt@pixel-haufen.de>",
   "license": "GPL 3",
   "bugs": {
-    "url": "https://github.com/mfahlandt/body-parser-zlib/issues"
+    "url": "https://github.com/point-of-media/body-parser-zlib/issues"
   },
-  "homepage": "https://github.com/mfahlandt/body-parser-zlib/issues#readme",
+  "homepage": "https://github.com/point-of-media/body-parser-zlib/#readme",
   "dependencies": {
     "bytes": "2.3.0",
     "content-type": "~1.0.1",

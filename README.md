@@ -4,10 +4,10 @@ Adds zlib as parser to the [body-parser](https://github.com/expressjs/body-parse
 
 This is really useful if you want to read gziped requests to save size
 
-[![Build Status](https://travis-ci.org/mfahlandt/body-parser-zlib.svg?branch=master)](https://travis-ci.org/mfahlandt/body-parser-zlib)
+[![Build Status](https://travis-ci.org/point-of-media/body-parser-zlib.svg?branch=master)](https://travis-ci.org/mfahlandt/body-parser-zlib)
 [![npm version](https://badge.fury.io/js/body-parser-xml.svg)](http://badge.fury.io/js/body-parser-zlib)
-[![Dependency Status](https://david-dm.org/mfahlandt/body-parser-zlib.svg)](https://david-dm.org/mfahlandt/body-parser-zlib)
-[![devDependency Status](https://david-dm.org/mfahlandt/body-parser-zlib/dev-status.svg)](https://david-dm.org/mfahlandt/body-parser-zlib#info=devDependencies)
+[![Dependency Status](https://david-dm.org/point-of-media/body-parser-zlib.svg)](https://david-dm.org/mfahlandt/body-parser-zlib)
+[![devDependency Status](https://david-dm.org/point-of-media/body-parser-zlib/dev-status.svg)](https://david-dm.org/mfahlandt/body-parser-zlib#info=devDependencies)
 
 ## Installation
 
