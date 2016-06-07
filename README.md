@@ -1,6 +1,6 @@
 # gzip Body Parser
 
-Adds zlib as parser to the [body-parser](https://github.com/expressjs/body-parser) library, so you can convert incoming gziped data into a string representation.
+Adds zlib as parser to the [body-parser](https://github.com/expressjs/body-parser) library, so you can convert incoming gzipped data into a string representation.
 
 This is really useful if you want to read gziped requests to save size
 
@@ -17,7 +17,7 @@ npm install --save express body-parser body-parser-zlib
 
 ## Usage
 
-This library adds an `zlib` method to the `body-parser` object.
+This library adds a `zlib` method to the `body-parser` object.
 
 Initialise like so:
 
@@ -33,7 +33,7 @@ var app = require('express')();
 app.use(bodyParser.zlib());
 ```
 
-This will parse any gziped request and place it as a JavaScript object on `req.body` for your route handlers to use.
+This will parse any gzipped request and place it as a JavaScript object on `req.body` for your route handlers to use.
 
 
 ## Example
@@ -80,9 +80,10 @@ app.post('/users', zlib, function(req, res, body) {
 ```
 ## Motivation
 
-This library was born out of a frustration that [body-parser](https://github.com/expressjs/body-parser), doesn't support parsing gziped content, if the header was not set, so for old systems you can use this
+This library was born out of a frustration that [body-parser](https://github.com/expressjs/body-parser) doesn't support parsing gzipped content if the corresponding header was not set.
+The provided functionality gives you the ability to control when you want to decompress a request regardless of the headers set. This makes it especially useful when communicating with legacy systems.
 
 
 ## License
 
-GPL 3
+GPL General Public License v3.0
