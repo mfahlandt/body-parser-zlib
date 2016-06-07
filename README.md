@@ -64,13 +64,13 @@ var express = require('express'),
     bodyParser = require('body-parser');
 var zlibParser;
 
-
 var app = express();
 require('body-parser-zlib')(bodyParser);
-var zlibParser = bodyParser.zlib();
+zlibParser = bodyParser.zlib();
 
-app.post('/users', zlib, function(req, res, body) {
-  // Any request with an Zlib payload will be parsed
+app.post('/users', zlibParser, function(req, res, body) {
+  // Any request to this route with a 
+  // Zlib payload will be parsed
   // and a String produced on req.body
   // corresponding to the request payload.
   console.log(req.body);
